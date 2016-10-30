@@ -121,8 +121,8 @@
     CGRect frame = self.bounds;
 
     // Set the background color
-    [(UIColor*)self.backgroundColor set];
-    UIRectFill(frame);
+    //[(UIColor*)self.backgroundColor set];
+    //UIRectFill(frame);
     // Set the waveform line color
     [(UIColor*)self.color set];
     
