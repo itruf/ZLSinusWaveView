@@ -101,17 +101,14 @@
     _amplitude = fmax( fmin(_dampingAmplitude*20, 1.0), _idleAmplitude);
     
     if (tick==0) {
-        if( plotData != nil ){
-            free(plotData);
+        CGPoint *points = self.points;
+        for (int i = 0; i < length; i++)
+        {
+            points[i].x = i;
+            points[i].y = data[i] * self.gain;
         }
-        
-        plotData   = (CGPoint *)calloc(sizeof(CGPoint),length);
-        plotLength = length;
-        
-        for(int i = 0; i < length; i++) {
-            data[i]     = i == 0 ? 0 : data[i];
-            plotData[i] = CGPointMake(i,data[i] * _gain);
-        }
+        points[0].y = points[length - 1].y = 0.0f;
+        self.pointCount = length;
         
         [self _refreshDisplay];
     }
